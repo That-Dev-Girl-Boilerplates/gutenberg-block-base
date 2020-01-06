@@ -9,7 +9,7 @@ import guBLOCKDeprecated from './deprecated.js';
 
   const { registerBlockType } = wp.blocks;
   const { PanelBody, TextControl } = wp.components;
-  const { InspectorControls } = wp.editor;
+  const { InspectorControls } = wp.blockEditor;
   const { Fragment } = wp.element;
 
   registerBlockType( 'gu/BLOCK', {
