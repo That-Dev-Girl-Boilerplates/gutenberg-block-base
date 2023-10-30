@@ -1,8 +1,8 @@
 /**
- * ICONS: My Block
+ * ICONS: BLOCK NAME
  */
 
-const MyBlockIcons = {
+const BlockNameIcons = {
 
   block:
     <svg xmlns='http://www.w3.org/2000/svg' width='20px' height='20px' x='0' y='0' viewBox='0 0 32 32'>
@@ -12,4 +12,4 @@ const MyBlockIcons = {
 
 };
 
-export default MyBlockIcons;
+export default BlockNameIcons;

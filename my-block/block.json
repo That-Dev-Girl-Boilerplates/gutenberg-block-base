@@ -1,0 +1,22 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+
+  "name": "tdg/block-name",
+  "title": "BLOCK NAME",
+  "category": "",
+  "description": "",
+
+  "attributes": {
+    "content": {
+      "type": "string",
+      "default": ""
+    }
+  },
+
+  "example": {
+    "attributes": {
+      "content": ""
+    }
+  }
+}

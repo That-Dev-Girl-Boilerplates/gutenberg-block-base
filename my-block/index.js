@@ -1,31 +1,24 @@
 /**
- * BLOCK: My Block
+ * BLOCK: BLOCK NAME
  */
 
-import MyBlockEdit from './edit.js';
-import MyBlockIcons from './icons.js';
+import { default as Edit } from './edit.js';
+import { default as Icons } from './icons.js';
+import { default as Metadata } from './block.json';
 
-const MyBlock = ( () => {
+const BlockName = ( () => {
 
   const { registerBlockType } = wp.blocks;
 
-  registerBlockType( 'tdg/my-block', {
-    title: 'BLOCK NAME',
-    description: '',
-    category: 'common',
-    icon: MyBlockIcons.block,
-    example: { attributes: {} }, // Show default example.
+  registerBlockType( Metadata, {
+    icon: Icons.block,
 
-    // Remove ability to have a custom class name.
-    supports: {
-      customClassName: false
-    },
-
+    // Edit UI.
     edit: ( props ) => {
-      return ( MyBlockEdit( props ) );
+      return ( Edit( props ) );
     },
 
-    // Dynamic block rendered in the PHP.
+    // Front-end UI; rendered in PHP.
     save: () => {
       return null;
     }
@@ -33,4 +26,4 @@ const MyBlock = ( () => {
 
 } )();
 
-export default MyBlock;
+export default BlockName;

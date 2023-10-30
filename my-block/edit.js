@@ -1,43 +1,68 @@
 /**
- * EDIT: My Block
+ * EDIT: BLOCK NAME
  */
 
-const MyBlockEdit = ( props ) => {
+const BlockNameEdit = ( props ) => {
 
-  // WP editor components.
+  /*
+   * Get required components from core.
+   */
   const { PanelBody, TextControl } = wp.components;
-  const { InspectorControls } = wp.blockEditor;
-  const { Fragment } = wp.element;
+  const { InspectorControls, useBlockProps } = wp.blockEditor;
 
-  // Block values from props.
+
+  /*
+   * Set of allowed child blocks _(optional)_
+   */
+  //const allowedBlocks = [ 'tdg/child-block-name' ];
+
+
+  /*
+   * Get block properties.
+   */
   const { setAttributes } = props;
   const { content } = props.attributes;
+  const blockProps = useBlockProps();
 
-  // Change event handlers.
+
+  /*
+   * Template for child blocks _(optional)_.
+   * The block initializes with 3 child item blocks.
+   */
+  // const getTemplate = memoize( () => {
+  //   return times( 3, () => [ 'tdg/child-block-name' ] );
+  // } );
+
+
+  /*
+   * Set change event handlers.
+   */
   const onChangeContent = ( value ) => { setAttributes( { content: value } ) };
+
 
   // Return the edit UI.
   return (
-    <Fragment>
+    <div { ...blockProps }>
 
+      { /* Inspector area customizations. */}
       <InspectorControls>
 
-        <PanelBody title="Panel title">
+        <PanelBody title='Panel title' initialOpen={ true }>
           <p>Something goes here.</p>
         </PanelBody>
 
       </InspectorControls>
 
-      // Edit UI in the editor.
+      { /* Editor interface. */}
       <TextControl
         label='Content'
         value={ content }
         onChange={ onChangeContent }
       />
 
-    </Fragment>
+    </div>
   );
 
 };
 
-export default MyBlockEdit;
+export default BlockNameEdit;

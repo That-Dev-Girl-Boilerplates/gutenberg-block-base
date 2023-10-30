@@ -3,13 +3,16 @@
 /**
  * My Block
  *
- * Registration and render functionality for My Block.
+ * Registration and render functionality for BLOCK NAME.
  */
 
-namespace ThatDevGirl\Blocks;
+namespace TDG\Blocks;
 
-class MyBlock {
+class BlockName {
 
+  /**
+   * __construct()
+   */
   public function __construct() {
     add_action( 'init', [ $this, 'register' ] );
   }
@@ -21,14 +24,7 @@ class MyBlock {
    * @return void
    */
   public function register(): void {
-    register_block_type( 'tdg/my-block', [
-
-      // Set up block attributes.
-      'attributes' => [
-        'content' => [ 'type' => 'string' ]
-      ],
-
-      // Declare render callback function.
+    register_block_type( __DIR__, [
       'render_callback' => [ $this, 'render' ]
     ] );
   }
@@ -38,18 +34,22 @@ class MyBlock {
    * render()
    *
    * @param array $attributes
+   * 
    * @return string
    */
-  public function render( $attributes ): string {
-    // Get individual attributes, for reading ease.
+  public function render( array $attributes ): string {
+    // Get block attribute data, for reading ease.
     $content = $attributes['content'];
 
     // Construct the block's HTML.
-    $html = sprintf( '<p>%1$s</p>', $content );
+    return <<<HTML
+<p>
+  $content
+</p>
 
-    return $html;
+HTML;
   }
 
 }
 
-new MyBlock;
+new BlockName;
